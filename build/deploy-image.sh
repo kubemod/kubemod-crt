@@ -10,4 +10,4 @@ fi
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 docker build -t kubemod/kubemod-crt:$KUBEMOD_CRT_IMAGE_VERSION .
-docker push kubemod/kubemod-crt:$KUBEMOD_CRT_IMAGE_VERSION .
+docker push kubemod/kubemod-crt:$KUBEMOD_CRT_IMAGE_VERSION
