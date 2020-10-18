@@ -1,17 +1,6 @@
 #!/usr/bin/env sh
 set -e
 
-echo "Generating certificates..."
-
-cfssl gencert -initca ca-csr.json | cfssljson -bare ca
-cfssl gencert \
-  -ca=ca.pem \
-  -ca-key=ca-key.pem \
-  -config=ca-config.json \
-  -hostname=kubemod-webhook-service.kubemod-system.svc \
-  -profile=server \
-  server-csr.json | cfssljson -bare server
-
 ca_bundle=$(cat ca.pem | base64 - | tr -d '\n' )
 sed -r -i "s|Cg==|$ca_bundle|" patch-mutating-webhook-configuration.json
 sed -r -i "s|Cg==|$ca_bundle|" patch-validating-webhook-configuration.json
