@@ -1,0 +1,23 @@
+name: 'Topic Workflow'
+
+on:
+  push:
+    branches-ignore:
+      - 'master'
+    tags-ignore:
+      - 'v*'
+
+jobs:
+
+  test:
+    name: Topic branch
+    runs-on: ubuntu-latest
+    if: contains(toJson(github.event.commits), '[skip ci]') == false
+
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Test
+        run: |
+          docker build -t kubemod/kubemod-crt:local .
