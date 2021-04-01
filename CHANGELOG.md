@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## 1.1.1 - 2021-04-01
+
+* Split apply script into create-secret and patch-controllers
+
 ## 1.1.0 - 2020-10-18
 
 * 3: Split renew-certificates.sh
