@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## 1.1.2 - 2022-01-21
+
+* 4: FIX: Scripts cannot write to /kubemod-crt directory under some scenarios
+
 ## 1.1.1 - 2021-04-01
 
 * Split apply script into create-secret and patch-controllers
