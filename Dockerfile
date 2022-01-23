@@ -12,7 +12,8 @@ RUN chmod +x \
     /usr/local/bin/cfssljson \
     /usr/local/bin/kubectl \
     && adduser -u $NONROOT_UID -D nonroot $NONROOT_GID \
-    && mkdir -p -m 775 /kubemod-crt
+    && mkdir -p -m 775 /kubemod-crt \
+    && chown nonroot:root /kubemod-crt
 
 COPY --chown=nonroot:nonroot files/ kubemod-crt/
 
