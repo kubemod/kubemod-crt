@@ -4,18 +4,22 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## 1.1.3 - 2022-01-23
+
+- 8: FIX: User nonroot lost write access to kubemod-crt after 1.1.2
+
 ## 1.1.2 - 2022-01-21
 
-* 4: FIX: Scripts cannot write to /kubemod-crt directory under some scenarios
+- 4: FIX: Scripts cannot write to /kubemod-crt directory under some scenarios
 
 ## 1.1.1 - 2021-04-01
 
-* Split apply script into create-secret and patch-controllers
+- Split apply script into create-secret and patch-controllers
 
 ## 1.1.0 - 2020-10-18
 
-* 3: Split renew-certificates.sh
-* 1: Make kubemod-crt run as non-root
+- 3: Split renew-certificates.sh
+- 1: Make kubemod-crt run as non-root
 
 ## 1.0.0 - 2020-10-18
 
