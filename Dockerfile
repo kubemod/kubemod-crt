@@ -1,19 +1,20 @@
+FROM kubesphere/kubectl:v1.20.0 as kubectl
+FROM jitesoft/cfssl:latest as cfssl
+FROM jetbrainsinfra/jq:latest as jq
+
 FROM alpine:3.6
+
+COPY --from=kubectl /usr/local/bin/kubectl /usr/local/bin/kubectl
+COPY --from=cfssl /usr/local/bin/cfssl /usr/local/bin/cfssl
+COPY --from=cfssl /usr/local/bin/cfssljson /usr/local/bin/cfssljson
+COPY --from=jq /usr/bin/jq /usr/bin/jq
 
 ARG NONROOT_UID=65532
 ARG NONROOT_GID=65532
 
-ADD https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 /usr/local/bin/cfssl
-ADD https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64 /usr/local/bin/cfssljson
-ADD https://storage.googleapis.com/kubernetes-release/release/v1.19.0/bin/linux/amd64/kubectl /usr/local/bin/kubectl
-
-RUN chmod +x \
-    /usr/local/bin/cfssl \
-    /usr/local/bin/cfssljson \
-    /usr/local/bin/kubectl \
-    && adduser -u $NONROOT_UID -D nonroot $NONROOT_GID \
-    && mkdir -p -m 775 /kubemod-crt \
-    && chown nonroot:root /kubemod-crt
+RUN adduser -u $NONROOT_UID -D nonroot $NONROOT_GID \
+ && mkdir -p -m 775 /kubemod-crt \
+ && chown nonroot:root /kubemod-crt
 
 COPY --chown=nonroot:nonroot files/ kubemod-crt/
 
