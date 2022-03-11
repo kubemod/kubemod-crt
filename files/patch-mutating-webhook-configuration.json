@@ -1,4 +1,0 @@
-[
-  {"op":"replace","path":"/webhooks/0/clientConfig/caBundle","value":"Cg=="},
-  {"op":"replace","path":"/webhooks/1/clientConfig/caBundle","value":"Cg=="}
-]
