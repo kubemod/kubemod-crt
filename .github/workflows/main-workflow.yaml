@@ -47,4 +47,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: nashant/kubemod-crt:${{ env.RELEASE_VERSION}}
+          tags: kubemod/kubemod-crt:${{ env.RELEASE_VERSION}}
