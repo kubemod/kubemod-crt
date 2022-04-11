@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## 1.2.0 - 2022-04-11
+
+- 13: Add support for ARM64
+
 ## 1.1.3 - 2022-01-23
 
 - 8: FIX: User nonroot lost write access to kubemod-crt after 1.1.2

@@ -1,5 +1,5 @@
 FROM kubesphere/kubectl:v1.20.0 as kubectl
-FROM jitesoft/cfssl:latest as cfssl
+FROM jitesoft/cfssl:1.6.1 as cfssl
 
 FROM alpine:3.6
 
