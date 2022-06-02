@@ -27,6 +27,12 @@ function main {
 
     current_ca_bundle=$(kubectl get ${KIND} ${OBJECT} -o=jsonpath="{${JSONPATH}}")
     decoded_ca=$(echo "$current_ca_bundle" | base64 -d)
+
+    if [ -z "$decoded_ca" ]; then
+        echo "No bundle found" >&2
+        exit 0
+    fi
+
     num_certs=$(($(echo "$decoded_ca" | grep "^$PATTERN" | wc -l)))
     echo "${num_certs} certs found in file" >&2
     if [ "${num_certs}" -eq 1 ]; then
