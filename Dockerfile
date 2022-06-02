@@ -10,7 +10,7 @@ COPY --from=cfssl /usr/local/bin/cfssljson /usr/local/bin/cfssljson
 ARG NONROOT_UID=65532
 ARG NONROOT_GID=65532
 
-RUN apk add --no-cache jq \
+RUN apk add --no-cache jq coreutils \
  && adduser -u $NONROOT_UID -D nonroot $NONROOT_GID \
  && mkdir -p -m 775 /kubemod-crt \
  && chown nonroot:root /kubemod-crt
