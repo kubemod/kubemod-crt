@@ -25,16 +25,17 @@ function main {
     done
     [ -n "${EXTRAS:-}" ] && echo "Unrecognized parameters: ${EXTRAS:-}" >&2
 
+    echo "Extracting previous CA certificate..." >&2
     current_ca_bundle=$(kubectl get ${KIND} ${OBJECT} -o=jsonpath="{${JSONPATH}}")
     decoded_ca=$(echo "$current_ca_bundle" | base64 -d)
 
     if [ -z "$decoded_ca" ]; then
-        echo "No bundle found" >&2
+        echo "No previous CA certificate found in ${KIND}/${OBJECT}" >&2
         exit 0
     fi
 
     num_certs=$(($(echo "$decoded_ca" | grep "^$PATTERN" | wc -l)))
-    echo "${num_certs} certs found in file" >&2
+    echo "[${num_certs}] previous CA certificates found, returning the last ${NUMCERTS}" >&2
     if [ "${num_certs}" -eq 1 ]; then
         echo "$decoded_ca"
         exit 0
