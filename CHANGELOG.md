@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## 1.2.1 - 2022-04-11
+
+- 15: Keep the previous certificate in the bundle as well as the new one to prevent periods of service outage
+
 ## 1.2.0 - 2022-04-11
 
 - 13: Add support for ARM64
