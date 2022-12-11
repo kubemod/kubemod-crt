@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## 1.3.0 - 2022-12-11
+
+-16: Prepare certificate patching for new pod binding web hook
+
 ## 1.2.1 - 2022-04-11
 
 - 15: Keep the previous certificate in the bundle as well as the new one to prevent periods of service outage
